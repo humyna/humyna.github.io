@@ -8,6 +8,7 @@ tags: [memcached]
 {% include JB/setup %}
 
 ##Getting Started
+
 ###下载
 
  [下载地址](http://memcached.org/downloads)，最新版本为1.4.22
