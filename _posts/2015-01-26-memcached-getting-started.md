@@ -1,4 +1,11 @@
-#memcached入门(H1技术笔记第1天)
+---
+layout: post
+title: "memcached入门(H1技术笔记第1天)"
+description: ""
+category: 
+tags: [memcached]
+---
+{% include JB/setup %}
 
 ##Getting Started
 ###下载
