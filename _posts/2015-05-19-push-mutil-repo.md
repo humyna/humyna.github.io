@@ -48,7 +48,9 @@ tags: [git,push]
 **注意**
 
 1.由于公司项目设计机密，就不发gitlab的提交成功截图了，另地址和显示均作了替换处理
+
 2.git_repo只是git@10.10.10.10:gittest/mygit.git的别名而已，只要保证多个远程库别名不重复即可
+
 3.以上思路也可用于同时push代码到多个远程库中，如下就是将代码同时push到git_repo和gitlab_repo的dev1分支
 
 	git push git_repo dev1
