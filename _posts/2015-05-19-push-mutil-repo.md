@@ -3,7 +3,7 @@ layout: post
 title: "git 跨库push代码(A100技术笔记第1天)"
 description: ""
 category: 
-tags: [git][push]
+tags: [git,push]
 ---
 {% include JB/setup %}
 
