@@ -15,9 +15,11 @@ tags: [git,push]
 ###具体操作步骤
 
  - 本地仓库与远程仓库建立连接
+
 >humyna@god:~/gitpushtest$ git remote add gitlab_repo git@11.11.11.11:gittest/mygit.git
 
  - 列出已经存在的远程分支
+
 >humyna@god:~/gitpushtest$ git remote -v
 
 	git_repo git@10.10.10.10:gittest/mygit.git (fetch)
@@ -26,6 +28,7 @@ tags: [git,push]
 	gitlab_repo git@11.11.11.11:gittest/mygit.git (push)
 
  - 检查当前状态
+
 >humyna@god:~/gitpushtest$ git status
 
 	位于分支 dev1
@@ -34,6 +37,7 @@ tags: [git,push]
 	无文件要提交，干净的工作区
 
 - 将本地的提交push到gitlab的dev1分支上(注意：此处由于gitlab_repo上dev1分支的代码是基于本地上一个提交的代码，故不存在merge等操作，否则需要fetch-->merge-->push)
+
 >humyna@god:~/gitpushtest$ git push gitlab_repo dev1
 
 	Counting objects: 80, done.
@@ -43,7 +47,6 @@ tags: [git,push]
 	Total 46 (delta 17), reused 0 (delta 0)
 	To git@11.11.11.11:gittest/mygit.git
    		99a59be..6b0cf26  dev1-> dev1
-
 
 **注意**
 
