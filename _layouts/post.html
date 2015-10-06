@@ -1,5 +1,89 @@
 ---
 layout: default
 ---
-{% include JB/setup %}
-{% include themes/twitter/post.html %}
+
+<link rel="stylesheet" href="http://looly-blog.qiniudn.com/js/prettify/prettify.css" />
+<style type="text/css">
+    body { background:#e8e8e8; }
+    @media screen and (max-width: 750px){
+        body { background:#fff; }
+    }
+    @media screen and (max-width: 1020px){
+        body { background:#fff; }
+    }
+    #qrcodeCanvas{margin-left:15px}
+</style>
+
+<div id="content">
+    <div class="entry">
+        <h1 class="entry-title"><a href="{{ page.url }}" title="{{ page.title }}">{{ page.title }}</a></h1>
+        <p class="entry-date">{{ page.date|date:"%Y-%m-%d" }}</p>
+
+        {{ content }}
+
+        <div id="disqus_container">
+            <!--搜狐畅言-->
+            <div id="SOHUCS"></div>
+            <script>
+              (function(){
+                var appid = 'cyr9ESTUX',
+                conf = 'prod_bc0ac5fa34748484ef7fc4c4620700e4';
+                var doc = document,
+                s = doc.createElement('script'),
+                h = doc.getElementsByTagName('head')[0] || doc.head || doc.documentElement;
+                s.type = 'text/javascript';
+                s.charset = 'utf-8';
+                s.src =  'http://assets.changyan.sohu.com/upload/changyan.js?conf='+ conf +'&appid=' + appid;
+                h.insertBefore(s,h.firstChild);
+                window.SCS_NO_IFRAME = true;
+              })()
+            </script>
+        </div>
+    </div>
+
+    <div class="sidenav">
+        <!-- 微博小窗口 -->
+        <iframe width="100%" height="75" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=75&fansRow=2&ptype=1&speed=0&skin=5&isTitle=0&noborder=0&isWeibo=0&isFans=0&uid=1821029715&verifier=31c6f06c&dpc=1"></iframe>
+        
+        <!-- 二维码 -->
+        <script type="text/javascript" src="http://looly-blog.qiniudn.com/js/jquery.qrcode.js"></script>
+        <script type="text/javascript" src="http://looly-blog.qiniudn.com/js/qrcode.js"></script>
+        <div id="qrcodeCanvas"></div>
+        <script>
+            $('#qrcodeCanvas').qrcode({
+                text: window.location.href,
+                width: 167,
+                height: 167
+            });
+        </script>
+    </div>
+
+    <!-- 文章目录 -->
+    <div class="sidenav">
+        <h2>Blog</h2>
+        <ul class="artical-list">
+        {% for post in site.categories.blog%}
+            <li><a href="{{ post.url }}">{{ post.title }}</a></li>
+        {% endfor %}
+        </ul>
+
+        <h2>Opinion</h2>
+        <ul class="artical-list">
+        {% for post in site.categories.opinion%}
+            <li><a href="{{ post.url }}">{{ post.title }}</a></li>
+        {% endfor %}
+        </ul>
+
+        <h2>Project</h2>
+        <ul class="artical-list">
+        {% for post in site.categories.project%}
+            <li><a href="{{ post.url }}">{{ post.title }}</a></li>
+        {% endfor %}
+        </ul>
+    </div>
+</div>
+
+<script src="http://looly-blog.qiniudn.com/js/post.js" type="text/javascript"></script>
+
+<!-- 分享侧面按钮 -->
+<script type="text/javascript" src="http://v3.jiathis.com/code/jiathis_r.js?btn=r2.gif" charset="utf-8"></script>
