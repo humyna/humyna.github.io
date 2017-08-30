@@ -9,3 +9,5 @@ title: Humyna's Blog 十井的博客
 url: http://tec.zoio.info
 feed: /atom.xml
 author_info: <a href="http://tec.zoio.info/">Humyna</a>
+
+theme: jekyll-theme-hacker
