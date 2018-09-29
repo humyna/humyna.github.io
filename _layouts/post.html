@@ -20,25 +20,7 @@ layout: default
         <p class="entry-date">{{ page.date|date:"%Y-%m-%d" }}</p>
 
         {{ content }}
-
-        <div id="disqus_container">
-            <!--搜狐畅言-->
-            <div id="SOHUCS"></div>
-            <script>
-              (function(){
-                var appid = 'cys1QETfp',
-                conf = 'prod_958d90646399df9729c847074131b85f';
-                var doc = document,
-                s = doc.createElement('script'),
-                h = doc.getElementsByTagName('head')[0] || doc.head || doc.documentElement;
-                s.type = 'text/javascript';
-                s.charset = 'utf-8';
-                s.src =  'http://assets.changyan.sohu.com/upload/changyan.js?conf='+ conf +'&appid=' + appid;
-                h.insertBefore(s,h.firstChild);
-                window.SCS_NO_IFRAME = true;
-              })()
-            </script>
-        </div>
+        
     </div>
 
     <div class="sidenav">
