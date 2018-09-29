@@ -2,16 +2,16 @@
 layout: post
 title: "git 跨库push代码(A100技术笔记第1天)"
 description: ""
-category: blog 
+category: blog
 tags: [git,push]
 ---
 
 
-###场景
+### 场景
 
 项目代码从团队自己搭建的git库(A库)切换到基于gitlab的git库(B库),因此我在本地开发的代码需要提交到新库(B库)。
 
-###具体操作步骤
+### 具体操作步骤
 
  - 本地仓库与远程仓库建立连接
 
@@ -47,7 +47,7 @@ tags: [git,push]
 	To git@11.11.11.11:gittest/mygit.git
    		99a59be..6b0cf26  dev1-> dev1
 
-**注意**
+** 注意 **
 
 1.由于公司项目设计机密，就不发gitlab的提交成功截图了，另地址和显示均作了替换处理
 
