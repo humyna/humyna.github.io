@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>[最佳实践]Windows7下搭建写博环境 | Humyna’s Blog</title>
+<meta name="generator" content="Jekyll v3.8.5" />
+<meta property="og:title" content="[最佳实践]Windows7下搭建写博环境" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="技术." />
+<meta property="og:description" content="技术." />
+<link rel="canonical" href="http://localhost:4000/blog/2014/03/16/blogging-based-on-jekyll.html" />
+<meta property="og:url" content="http://localhost:4000/blog/2014/03/16/blogging-based-on-jekyll.html" />
+<meta property="og:site_name" content="Humyna’s Blog" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2014-03-16T00:00:00+08:00" />
+<script type="application/ld+json">
+{"description":"技术.","@type":"BlogPosting","url":"http://localhost:4000/blog/2014/03/16/blogging-based-on-jekyll.html","headline":"[最佳实践]Windows7下搭建写博环境","dateModified":"2014-03-16T00:00:00+08:00","datePublished":"2014-03-16T00:00:00+08:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/blog/2014/03/16/blogging-based-on-jekyll.html"},"@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Humyna's Blog" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">Humyna&#39;s Blog</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/about/">关于我</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">[最佳实践]Windows7下搭建写博环境</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2014-03-16T00:00:00+08:00" itemprop="datePublished">Mar 16, 2014
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <h2 id="软件下载">软件下载</h2>
+<ul>
+  <li>Windows 7 64bit</li>
+  <li><a href="http://rubyforge.org/frs/download.php/76054/rubyinstaller-1.9.3-p194.exe">RubyInstaller 1.9.3</a></li>
+  <li><a href="https://github.com/oneclick/rubyinstaller/downloads/">DevKit-DevKit-tdm-32-4.5.2-20111229-1559-sfx.exe</a></li>
+  <li>Jekyll 1.4.2</li>
+  <li>Rdiscount</li>
+  <li>Github客户端</li>
+  <li>Gvim7.3</li>
+</ul>
+
+<h2 id="安装配置">安装配置</h2>
+<ul>
+  <li>1.下载RubyInstaller并安装，然后在命令行终端下输入gem update –system来升级gem，然后分别输入ruby -v和gem -v检验安装版本</li>
+  <li>2.下载最新的DevKit(DevKit是windows平台下编译和使用本地C/C++扩展包的工具。它就是用来模拟Linux平台下的make,gcc,sh来进行编译。这个方法目前仅支持通过RubyInstaller安装的Ruby)并双击运行解压到C:\DevKit。然后打开终端cmd，输入下列命令进行安装：
+  cd C:\DevKit
+  ruby dk.rb init
+  ruby dk.rb install</li>
+  <li>3.完成上面的准备就可以安装Jekyll了,因为Jekyll是用Ruby编写的,最好的安装方式是通过RubyGems(gem):
+  gem install Jekyll –version “=1.4.2”</li>
+  <li>4.安装Rdiscount，这个用来解析Markdown标记的包，使用如下命令：
+  gem install rdiscount</li>
+  <li>5.安装Github on windows，安装完桌面有Github和git shell两个快捷方式</li>
+  <li>6.安装Gvim7.3，并配置markdown插件</li>
+</ul>
+
+<h2 id="写作环境搭建">写作环境搭建</h2>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1.在github.com注册账号
+2.创建名为humyna.github.io的仓库
+3.Clone in Desktop
+4.打开git shell,使用如下命令clone Jekyll-Bootstrap到本地
+git clone https://github.com/plusjade/jekyll-bootstrap.git Jekyll-Bootstrap
+5.将Jekyll-Bootstrap文件夹中除.git外的所有文件copy到humyna.github.io文件夹中
+6.修改_config.yml中相关的配置，设置博客主题
+7.在git shell中，cd到humyna.github.io文件夹下，执行命令jekyll serve --watch(不加--watch则不会检测文件夹内的变化，即修改后需要重新启动jekyll),即可以通过http://localhost:4000访问本地的博客环境
+8.执行rake post title="hello world"即可在_posts文件夹下生成一个md文件，使用vim编辑进行博客创作，保存后可以在浏览器中看到效果。
+9.完成写作后，使用github的客户端完成提交，这样就能将完成的博文发布到网上(humyna.github.io)
+</code></pre></div></div>
+
+<h2 id="注意事项">注意事项</h2>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1.Ruby默认安装后在用户环境变量中已添加（path=C:\Ruby193\bin）无需再配置
+2.Ruby和DevKit解压路径不能有空格
+3.Jekyll应该安装1.4.2版本(使用jekyll -v检查是否安装成功)并配置用户环境变量解决中文编码问题LC_ALL=en_US.UTF-8和Lang=en_US.UTF-8
+如果此时使用gem 安装软件会报错：
+ERROR:  While executing gem ... (ArgumentError)
+invalid byte sequence in UTF-8
+需要先删除这两个环境变量，等完装完再加上。
+4.Gvim需要设置默认编码为utf-8,不然打开含有中文文件会有乱码
+5.可以绑定自己的域名，在根目录下闯将CNAME文件并将域名加进去，同时配置域名映射即可。
+</code></pre></div></div>
+
+  </div><a class="u-url" href="/blog/2014/03/16/blogging-based-on-jekyll.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Humyna&#39;s Blog</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Humyna&#39;s Blog</li><li><a class="u-email" href="mailto:hufo125#gmail.com（@替换#）">hufo125#gmail.com（@替换#）</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/Humyna"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">Humyna</span></a></li><li><a href="https://www.twitter.com/Humyna"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">Humyna</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>技术.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

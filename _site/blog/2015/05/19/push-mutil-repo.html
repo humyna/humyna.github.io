@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>git 跨库push代码(A100技术笔记第1天) | Humyna’s Blog</title>
+<meta name="generator" content="Jekyll v3.8.5" />
+<meta property="og:title" content="git 跨库push代码(A100技术笔记第1天)" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="技术." />
+<meta property="og:description" content="技术." />
+<link rel="canonical" href="http://localhost:4000/blog/2015/05/19/push-mutil-repo.html" />
+<meta property="og:url" content="http://localhost:4000/blog/2015/05/19/push-mutil-repo.html" />
+<meta property="og:site_name" content="Humyna’s Blog" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2015-05-19T00:00:00+08:00" />
+<script type="application/ld+json">
+{"description":"技术.","@type":"BlogPosting","url":"http://localhost:4000/blog/2015/05/19/push-mutil-repo.html","headline":"git 跨库push代码(A100技术笔记第1天)","dateModified":"2015-05-19T00:00:00+08:00","datePublished":"2015-05-19T00:00:00+08:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/blog/2015/05/19/push-mutil-repo.html"},"@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Humyna's Blog" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">Humyna&#39;s Blog</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/about/">关于我</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">git 跨库push代码(A100技术笔记第1天)</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2015-05-19T00:00:00+08:00" itemprop="datePublished">May 19, 2015
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <h3 id="场景">场景</h3>
+
+<p>项目代码从团队自己搭建的git库(A库)切换到基于gitlab的git库(B库),因此我在本地开发的代码需要提交到新库(B库)。</p>
+
+<h3 id="具体操作步骤">具体操作步骤</h3>
+
+<ul>
+  <li>本地仓库与远程仓库建立连接</li>
+</ul>
+
+<blockquote>
+  <p>humyna@god:~/gitpushtest$ git remote add gitlab_repo git@11.11.11.11:gittest/mygit.git</p>
+</blockquote>
+
+<ul>
+  <li>列出已经存在的远程分支</li>
+</ul>
+
+<blockquote>
+  <p>humyna@god:~/gitpushtest$ git remote -v</p>
+</blockquote>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git_repo git@10.10.10.10:gittest/mygit.git (fetch)
+git_repo git@10.10.10.10:gittest/mygit.git (push)
+gitlab_repo git@11.11.11.11:gittest/mygit.git (fetch)
+gitlab_repo git@11.11.11.11:gittest/mygit.git (push)
+</code></pre></div></div>
+
+<ul>
+  <li>检查当前状态</li>
+</ul>
+
+<blockquote>
+  <p>humyna@god:~/gitpushtest$ git status</p>
+</blockquote>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>位于分支 dev1
+您的分支与上游分支 'git_repo/dev1' 一致。
+
+无文件要提交，干净的工作区
+</code></pre></div></div>
+
+<ul>
+  <li>将本地的提交push到gitlab的dev1分支上(注意：此处由于gitlab_repo上dev1分支的代码是基于本地上一个提交的代码，故不存在merge等操作，否则需要fetch–&gt;merge–&gt;push)</li>
+</ul>
+
+<blockquote>
+  <p>humyna@god:~/gitpushtest$ git push gitlab_repo dev1</p>
+</blockquote>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Counting objects: 80, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (30/30), done.
+Writing objects: 100% (46/46), 8.24 KiB | 0 bytes/s, done.
+Total 46 (delta 17), reused 0 (delta 0)
+To git@11.11.11.11:gittest/mygit.git
+   		99a59be..6b0cf26  dev1-&gt; dev1
+</code></pre></div></div>
+
+<p><strong>注意</strong></p>
+
+<p>1.由于公司项目设计机密，就不发gitlab的提交成功截图了，另地址和显示均作了替换处理</p>
+
+<p>2.git_repo只是git@10.10.10.10:gittest/mygit.git的别名而已，只要保证多个远程库别名不重复即可</p>
+
+<p>3.以上思路也可用于同时push代码到多个远程库中，如下就是将代码同时push到git_repo和gitlab_repo的dev1分支</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git push git_repo dev1
+git push gitlab_repo dev1
+</code></pre></div></div>
+
+<p>—-EOF—-</p>
+
+  </div><a class="u-url" href="/blog/2015/05/19/push-mutil-repo.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Humyna&#39;s Blog</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Humyna&#39;s Blog</li><li><a class="u-email" href="mailto:hufo125#gmail.com（@替换#）">hufo125#gmail.com（@替换#）</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/Humyna"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">Humyna</span></a></li><li><a href="https://www.twitter.com/Humyna"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">Humyna</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>技术.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
