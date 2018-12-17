@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "memcached入门(H1技术笔记第1天)"
+title: "memcached入门"
 description: ""
 category: blog
 tags: [memcached]
@@ -18,11 +18,11 @@ tags: [memcached]
 - Redhat/Centos: yum install libevent-devel
 
 >  wget http://memcached.org/latest
->  
+>
 >  tar -zxvf memcached-1.x.x.tar.gz
->  
+>
 >  cd memcached-1.x.x
->  
+>
 >  ./configure && make && make test && sudo make install
 
 ### 启动

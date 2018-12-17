@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "git 跨库push代码(A100技术笔记第1天)"
+title: "git 跨库push代码"
 description: ""
 category: blog
 tags: [git,push]
