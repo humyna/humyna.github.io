@@ -29,6 +29,7 @@ tags: [git,Github]
 3. 使用以下语句将本地代码及记录push到远程仓库：
 
 > git remote add origin1 https://github.com/xxx/test
+> 
 > git push -u origin1 master
 
 参考：https://www.cnblogs.com/qq952693358/p/7806152.html
