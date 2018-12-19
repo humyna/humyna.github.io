@@ -15,13 +15,13 @@ tags: [git,Github]
 
 所以为了删除这条提交记录唯一的方法只能是： **先删除github上的仓库https://github.com/xxx/test,然后新建一个空项目test，接着把本地代码回滚至上一版本，最后再重新修改git配置提交代码，并push到github上。**
 
-####Step1:删除github上的仓库test。直接登录网站操作即可。
-####Step2:本地代码回滚至上一版本
+### Step1:删除github上的仓库test。直接登录网站操作即可。
+### Step2:本地代码回滚至上一版本
 1. 先备份代码
 2. git log确定上一提交的commit id
 3. 执行命令git reset --hard [commit id]回滚至上一次提交
 4. 将备份代码覆盖回滚代码文件，并提交(务必注意修改git config中user信息)
-####Step3：提交至github
+### Step3：提交至github
 1. 新建一个Github仓库test
 2. 通过命令行cd进本地仓库；
 3. 使用以下语句将本地代码及记录push到远程仓库：
