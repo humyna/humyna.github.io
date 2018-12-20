@@ -1,7 +1,7 @@
 ---
 layout: page
-title: 关于我
+title: 关于
 permalink: /about/
 ---
 
-404
+区块链布道者。
