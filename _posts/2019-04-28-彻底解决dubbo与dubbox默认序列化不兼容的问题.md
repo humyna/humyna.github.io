@@ -1,8 +1,9 @@
 
 > 本文主要解决了spring-boot项目引入dubbo官方提供starter暴露服务被dubbox客户端调用出现序列化不兼容的问题。
-> 项目已开源，项目地址：https://github.com/humyna/spring-boot-starter-dubbox
+>
+> 项目已开源，[项目地址](https://github.com/humyna/spring-boot-starter-dubbox)
 
-````
+```
 近期公司业务发展需要需要基于spring-boot搭建一个新项目。
 项目为了兼容公司旧技术栈需要对外暴露Dubbo服务，故引入了Dubbo的原生starter。
 在测试过程中发现暴露服务被现有调用时出现序列化问题。
@@ -14,10 +15,10 @@
 我们知道原生Dubbo使用xml配置<dubbo:annotation />来开启注解配置，并提供com.alibaba.dubbo.config.annotation.Service注解进行服务注册，提供com.alibaba.dubbo.config.annotation.Reference注解进行服务注入。既然Dubbo支持使用JavaConfig方式进行服务的注册暴露及调用，那么可以从这入手来解决序列化兼容问题。实现思路参考：https://my.oschina.net/roccn/blog/847635
 
 具体实现可以参考项目源码。
-````
+```
 
-## spring-boot-starter-dubbox
-### 使用方法
+# spring-boot-starter-dubbox
+## 使用方法
 
 #### 一、发布jar至maven伺服
 1. 下载工程代码
@@ -25,18 +26,22 @@
 3. 然后执行mvn deploy，发布至仓库
 
 #### 二、springboot工程暴露和调用dubbo服务
+
 1. 工程pom.xml引入
-````
+
+```
 <dependency>
 	<groupId>info.zoio.spring</groupId>
 	<artifactId>spring-boot-starter-dubbox</artifactId>
 	<version>1.0.0</version>
 </dependency>
-````
+```
 
 2. 配置
+
 * yml配置
-````
+
+```
 spring:
   dubbo:
     application:
@@ -59,17 +64,18 @@ spring:
       dispatcher: all
       threadpool: fixed
       threads: 1000
-````
+```
 
 3. 服务调用
-````
+```
 @org.springframework.stereotype.Component
 @org.springframework.context.annotation.Profile({"dev","test","online"})
 public class DubboReference {
 	@com.alibaba.dubbo.config.annotation.Reference(group = "demo", version = "1.0.0", timeout = 60000, retries = 0)
 	public DemoFacade demoFacade;
 }
-````
+```
+
 > 其中dev、test、online对应
 >
 > application-dev.yml
@@ -79,17 +85,20 @@ public class DubboReference {
 > application-online.yml
 
 * 业务调用
-````
+
+```
 @javax.annotation.Resource
 private DubboReference dubboReference;
 
 dubboReference.demoFacade.methodXXX();
-````
+```
+
 4. 暴露服务
-````
+
+```
 @org.springframework.stereotype.Component
 @Service(version = "1.0.0",timeout = 10000,interfaceClass = ExportDemoFacade.class,group="demo")
 public class exportDemoFacadeImpl implements exportDemoFacade {
 	//TODO
 }
-````
+```
