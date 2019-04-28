@@ -98,7 +98,7 @@ dubboReference.demoFacade.methodXXX();
 ```
 @org.springframework.stereotype.Component
 @Service(version = "1.0.0",timeout = 10000,interfaceClass = ExportDemoFacade.class,group="demo")
-public class exportDemoFacadeImpl implements exportDemoFacade {
+public class ExportDemoFacadeImpl implements ExportDemoFacade {
 	//TODO
 }
 ```
