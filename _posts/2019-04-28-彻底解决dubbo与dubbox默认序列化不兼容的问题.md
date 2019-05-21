@@ -65,6 +65,7 @@ spring:
       threadpool: fixed
       threads: 1000
 ```
+如果没有配置spring.dubbo.registry,系统会默认注册到127.0.0.1:2181上。
 
 3. 服务调用
 ```
